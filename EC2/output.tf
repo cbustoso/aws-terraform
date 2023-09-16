@@ -1,4 +1,4 @@
-output "URL WEB "" {
+output "URL WEB"  {
   description = "DNS pública del servidor"
   value       = "http://${aws_instance.servidor_1.public_dns}:${var.puerto_servidor}"
 }
