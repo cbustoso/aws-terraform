@@ -27,14 +27,14 @@ resource "aws_security_group" "LabIaC" {
   name = "LabIaC"
 
   ingress {
-    cidr_blocks = "0.0.0.0/0"
+    cidr_blocks = ["0.0.0.0/0"]
     description     = "Acceso al puerto 8080"
     from_port       = var.puerto_servidor
     to_port         = var.puerto_servidor
     protocol        = "TCP"
   }
     ingress {
-    cidr_blocks = "0.0.0.0/0"
+    cidr_blocks = ["0.0.0.0/0"]
     from_port   = var.puerto_ssh
     to_port     = var.puerto_ssh
     protocol    = "tcp"
