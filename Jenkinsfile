@@ -18,13 +18,6 @@ pipeline {
           choice(name: 'ACCION', choices: ['', 'plan-apply', 'destroy'], description: 'Seleccione acción a ejecutar')
     }
     stages{ 
-        /*stage('Prueba Aws') {
-            steps { 
-            sh 'aws --version' 
-            sh 'aws s3 ls' 
-           // sh 'aws ec2 describe-instances'
-           } 
-        } */
         stage('Clean Workspaces -----------') { 
             steps {
               cleanWs()
@@ -39,7 +32,7 @@ pipeline {
                 extensions: [[$class: 'CleanCheckout']], 
                 submoduleCfg: [], 
                 userRemoteConfigs: [
-                        [url: 'https://github.com/cbustoso/aws-terraform.git', credentialsId: '']
+                        [url: 'https://github.com/cbustoso/aws-terraform.git', te: '']
                         ]])
                 sh 'pwd' 
                 sh 'ls -l'
