@@ -18,13 +18,13 @@ pipeline {
           choice(name: 'ACCION', choices: ['', 'plan-apply', 'destroy'], description: 'Seleccione acción a ejecutar')
     }
     stages{ 
-        stage('Prueba Aws') {
+        /*stage('Prueba Aws') {
             steps { 
             sh 'aws --version' 
             sh 'aws s3 ls' 
            // sh 'aws ec2 describe-instances'
            } 
-        } 
+        } */
         stage('Clean Workspaces -----------') { 
             steps {
               cleanWs()
