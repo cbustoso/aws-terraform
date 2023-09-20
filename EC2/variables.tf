@@ -11,7 +11,12 @@ variable "puerto_ssh" {
     default = 22
   
 }
-
+variable "puerto_ftp" {
+    description = "Puerto para ftp"
+    type = number
+    default = 21
+  
+}
 variable "tipo_instancia" {
     description = "Tipo de instancia EC2"
     type = string
