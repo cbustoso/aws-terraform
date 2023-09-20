@@ -7,35 +7,28 @@ pipeline {
       disableConcurrentBuilds()
       parallelsAlwaysFailFast()
       timestamps()
-      withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding', 
-            credentialsId: 'awskey', 
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-            ]]) 
     }
     parameters { 
-          choice(name: 'ENTORNOS', choices: ['dev', 'pre', 'pro'], description: 'Seleccione el entorno a utilizar')
           choice(name: 'ACCION', choices: ['', 'plan-apply', 'destroy'], description: 'Seleccione el entorno a utilizar')
     }
     stages{ 
-        stage('Prueba Aws') {
+       /* stage('Prueba Aws') {
             steps { 
             sh 'aws --version' 
             sh 'aws s3 ls' 
            // sh 'aws ec2 describe-instances'
            } 
-        } 
+        } */
         stage('Clean Workspaces -----------') { 
             steps {
               cleanWs()
               sh 'env'
             } //steps
-        }    
+        } 
         stage('Load Terraform code -----------') {     
             steps {
                 checkout([$class: 'GitSCM', 
-                branches: [[name: '*/main']], 
+                branches: [[name: '*/develop']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [[$class: 'CleanCheckout']], 
                 submoduleCfg: [], 
@@ -78,4 +71,5 @@ pipeline {
             } //steps
         }  //stage
    }  // stages
-}//pipeline
+}
+//pipeline 
