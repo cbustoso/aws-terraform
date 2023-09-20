@@ -17,3 +17,10 @@ variable "tipo_instancia" {
     type = string
     default = "t2.micro"
 }
+
+variable "id_ami" {
+    description = "Id Ami AWS"
+    type = string
+    default = "ami-053b0d53c279acc90"
+  
+}

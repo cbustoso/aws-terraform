@@ -7,7 +7,7 @@ data "aws_subnet" "az_a" {
 }
 
 resource "aws_instance" "servidor_1" {
-  ami                    = "ami-053b0d53c279acc90"
+  ami                    = var.id_ami
   instance_type          = var.tipo_instancia
   subnet_id              = data.aws_subnet.az_a.id
   vpc_security_group_ids = [aws_security_group.LabIaC.id]
