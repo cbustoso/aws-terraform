@@ -1,38 +1,3 @@
-version: 1.0
-type: terraform
-metadata:
-  version: 0.1.0
-agent:
-  size: l
-  packages:
-    - terraform=0.13.4-1
-    - terraform-docs=0.12.1-1
-stages:
-  linter:
-    enabled: true
-    report:
-      enabled: true
-      type: checkstyle
-      pattern: .*/checkstyle/.*\.xml$
-      reporter: TFLint
-    commands:
-      - make mk-init
-      - make terraform/checkstyle
-      - make terraform/validate
-  deploy:
-    enabled: true
-    runConfirmation: false
-    preRunCommands:
-    //  - terragrunt --version
-      - terraform --version
-     // - terragrunt destroy --auto-approve -no-color
-      - terraform plan -no-color --terragrunt-source-update
-    runCommands:
-      - terraform apply -auto-approve -no-color
-    postRunCommands:
-    //  - terraform destroy --auto-approve -no-color
-
-/*
 pipeline {
     agent any 
     environment {
@@ -53,7 +18,7 @@ pipeline {
             sh 'aws s3 ls' 
            // sh 'aws ec2 describe-instances'
            } 
-        } 
+        } */
         stage('Clean Workspaces -----------') { 
             steps {
               cleanWs()
@@ -63,7 +28,7 @@ pipeline {
         stage('Load Terraform code -----------') {     
             steps {
                 checkout([$class: 'GitSCM', 
-                branches: [[name: 'develop']], 
+                branches: [[name: '*/develop']], 
                 doGenerateSubmoduleConfigurations: false, 
                 extensions: [[$class: 'CleanCheckout']], 
                 submoduleCfg: [], 
@@ -107,4 +72,4 @@ pipeline {
         }  //stage
    }  // stages
 }
-//pipeline */
+//pipeline 
