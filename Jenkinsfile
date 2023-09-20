@@ -9,7 +9,7 @@ pipeline {
       timestamps()
       withCredentials([[
             $class: 'AmazonWebServicesCredentialsBinding', 
-            credentialsId: 'awskey', 
+            credentialsId: '59206b9c-cfa0-4b02-b8f3-38dfe615c214', 
             accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
             ]]) 
