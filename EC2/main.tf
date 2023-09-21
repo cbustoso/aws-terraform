@@ -10,6 +10,7 @@ resource "aws_instance" "servidor_1" {
   ami                    = var.id_ami
   instance_type          = var.tipo_instancia
   subnet_id              = data.aws_subnet.az_a.id
+  key_name               = var.key_pair
   vpc_security_group_ids = [aws_security_group.LabIaC.id]
 
   user_data = <<-EOF
