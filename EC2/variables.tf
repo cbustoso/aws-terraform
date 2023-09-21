@@ -11,7 +11,7 @@ variable "puerto_ssh" {
     default = 22
   
 }
-variable "puerto_ftp" {
+variable "puerto_nginx" {
     description = "Puerto para Nginx"
     type = number
     default = 80
