@@ -23,6 +23,12 @@ variable "tipo_instancia" {
     default = "t2.micro"
 }
 
+variable "key_pair" {
+    description = "Key pair EC2"
+    type = string
+    default = ""
+}
+
 variable "id_ami" {
     description = "Id Ami AWS"
     type = string
