@@ -24,7 +24,7 @@ pipeline {
               sh 'env'
             } //steps
         }    
-        stage('Load Terraform code -----------') {     
+        stage('Carga de codigo terraform -----------') {     
             steps {
                 checkout([$class: 'GitSCM', 
                 branches: [[name: '*/main']], 
@@ -58,13 +58,11 @@ pipeline {
         }//stage
         stage('Terraform apply or destroy ----------------') {
             steps {
-               sh 'echo "comienza"'
+               sh 'echo "comienza desplieguen"'
             script{  
                 if (params.ACCION == "destroy"){
-                         sh ' echo "llego" + params.ACCION'   
                          sh 'terraform destroy -auto-approve'
-                } else {
-                         sh ' echo  "llego" + params.ACCION'                 
+                } else {                 
                          sh ' terraform apply -auto-approve'  
                 }  // if
             }
