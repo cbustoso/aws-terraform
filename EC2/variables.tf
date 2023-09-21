@@ -12,9 +12,9 @@ variable "puerto_ssh" {
   
 }
 variable "puerto_ftp" {
-    description = "Puerto para ftp"
+    description = "Puerto para Nginx"
     type = number
-    default = 21
+    default = 80
   
 }
 variable "tipo_instancia" {
