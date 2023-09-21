@@ -24,9 +24,9 @@ variable "tipo_instancia" {
 }
 
 variable "key_pair" {
-    description = "Key pair EC2"
+    description = "Key pair RSA EC2 "
     type = string
-    default = ""
+    default = "labiac"
 }
 
 variable "id_ami" {
