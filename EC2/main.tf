@@ -44,9 +44,9 @@ resource "aws_security_group" "LabIaC" {
   }
      ingress {
     cidr_blocks = ["0.0.0.0/0"]
-    description = "Acceso al puerto 22"
-    from_port   = var.puerto_ftp
-    to_port     = var.puerto_ftp
+    description = "Acceso al puerto 80"
+    from_port   = var.puerto_nginx
+    to_port     = var.puerto_nginx
     protocol    = "tcp"
    
   }
