@@ -31,19 +31,19 @@ variable "endpoint_public_access" {
 variable "eks_cluster_subnet_ids" {
   type = list(string)
   description = "List of subnet IDs. Must be in at least two different availability zones. Amazon EKS creates cross-account elastic network interfaces in these subnets to allow communication between your worker nodes and the Kubernetes control plane."
-  default = [ "subnet-63279142, subnet-13a2d95e, subnet-0674c059" ]
+  default = [ "subnet-63279142" ]
 }
 
 variable "private_subnet_ids" {
   type = list(string)
   description = "List of private subnet IDs."
-  default = [ "subnet-63279142, subnet-13a2d95e, subnet-0674c059" ]
+  default = [ "subnet-13a2d95e" ]
 }
 
 variable "public_subnet_ids" {
   type = list(string)
   description = "List of public subnet IDs."
-  default = [ "subnet-13a30875, subnet-0793fe09, subnet-3f8d730e" ]
+  default = [ "subnet-13a30875" ]
 }
 
 variable "ami_type" {
