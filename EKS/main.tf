@@ -27,8 +27,8 @@ data "aws_iam_policy_document" "assume_cluster" {
     }
   }
 }
-resource "aws_iam_role_policy_attachment" "aws_eks_policy" {
-  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonEKSServiceRolePolicy"
+resource "aws_iam_role_policy_attachment" "aws_eks_cluster_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.eks_cluster.name
 }
 
