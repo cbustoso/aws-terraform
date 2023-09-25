@@ -8,10 +8,12 @@ resource "aws_eks_cluster" "main" {
     endpoint_public_access  = var.endpoint_public_access
     subnet_ids = var.eks_cluster_subnet_ids
   }
+}
+
 
 resource "aws_iam_role" "eks_cluster" {
   name = "${var.eks_cluster_name}-cluster"
-  assume_role_policy = "${file("roleeks.json")}"
+  assume_role_policy = "${file("./EKS/roleeks.json")}"
 }
 
 resource "aws_security_group" "eks_cluster" {
@@ -175,5 +177,4 @@ resource "aws_security_group_rule" "nodes_inbound" {
   source_security_group_id = aws_security_group.eks_cluster.id
   to_port                  = 65535
   type                     = "ingress"
-}
 }
