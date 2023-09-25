@@ -13,8 +13,21 @@ resource "aws_eks_cluster" "main" {
 
 resource "aws_iam_role" "eks_cluster" {
   name = "${var.eks_cluster_name}-cluster"
-  assume_role_policy = "${file("./EKS/roleeks.json")}"
+  assume_role_policy = data.aws_iam_policy_document.assume_cluster.json
 }
+data "aws_iam_policy_document" "assume_cluster" {
+  statement {
+    effect = "Allow"
+
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      type        = "Service"
+      identifiers = ["eks.amazonaws.com"]
+    }
+  }
+}
+
 
 resource "aws_security_group" "eks_cluster" {
   name        = var.cluster_sg_name
