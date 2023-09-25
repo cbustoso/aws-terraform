@@ -27,7 +27,10 @@ data "aws_iam_policy_document" "assume_cluster" {
     }
   }
 }
-
+resource "aws_iam_role_policy_attachment" "aws_eks_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/aws-service-role/AmazonEKSServiceRolePolicy"
+  role       = aws_iam_role.eks_cluster.name
+}
 
 resource "aws_security_group" "eks_cluster" {
   name        = var.cluster_sg_name
@@ -154,6 +157,8 @@ resource "aws_iam_role_policy_attachment" "ec2_read_only" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.eks_nodes.name
 }
+
+
 resource "aws_security_group" "eks_nodes" {
   name        = var.nodes_sg_name
   description = "Security group for all nodes in the cluster"
