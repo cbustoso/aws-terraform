@@ -58,7 +58,7 @@ pipeline {
         }//stage
         stage('Terraform apply or destroy ----------------') {
             steps {
-               sh 'echo "comienza desplieguen"'
+               sh 'echo "comienza el despliegue"'
             script{  
                 if (params.ACCION == "destroy"){
                          sh 'terraform destroy -auto-approve'
